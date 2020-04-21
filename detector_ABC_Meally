@@ -4,7 +4,7 @@ USE ieee.std_logic_1164.all;
 ENTITY detector_ABC_Meally IS
 PORT (
 	clk	, rst           	: IN std_logic;
-    entrada: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+   entrada: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
 	saida		            : OUT std_logic
 );
 END detector_ABC_Meally;
@@ -35,24 +35,37 @@ PROCESS(estado_atual, entrada)
 BEGIN
    CASE estado_atual IS
       WHEN A =>
-            saida <= '0';
-            IF (entrada = "00") THEN proximo_estado <= B;
-            ELSE proximo_estado <= A;
-            END IF;
+			CASE entrada IS 
+				WHEN "00" =>
+					proximo_estado <= B;			
+					saida <= '0';
+				WHEN OTHERS =>
+					proximo_estado <= A;
+					saida <= '0';
+		END CASE;
+		
       WHEN B =>
-            saida <= '0';
-            IF (entrada = "01") THEN proximo_estado <= C;
-            ELSE IF (entrada = "00") proximo_estado <= B;
-            ELSE proximo_estado <= A;
-            END IF;
+			CASE entrada IS 
+				WHEN "01" =>
+					proximo_estado <= C;
+					saida <= '0';
+				WHEN "00" =>
+					proximo_estado <= B;
+					saida <= '0';
+				WHEN OTHERS =>
+					proximo_estado <= A;
+					saida <= '0';
+		END CASE;
+		
       WHEN C =>
-            IF (entrada = "10") THEN 
-            proximo_estado <= A;
-            saida <= '1';
-            ELSE proximo_estado <= A;
-            saida <= '0';
-            END IF;
-          END CASE;
+			CASE entrada IS
+				WHEN "10" =>
+					proximo_estado <= A;
+					saida <= '1';
+				WHEN OTHERS =>
+					proximo_estado <= A;
+					saida <= '0';
+     END CASE;     
    END CASE;
 END PROCESS;
 		
