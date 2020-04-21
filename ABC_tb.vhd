@@ -1,10 +1,10 @@
 LIBRARY ieee;                                               
 USE ieee.std_logic_1164.all;                                
 
-ENTITY ABC-Meally-tb IS
-END ABC-Meally-tb;
+ENTITY ABC_tb IS
+END ABC_tb;
 
-ARCHITECTURE testbench OF ABC-Meally-tb IS 
+ARCHITECTURE testbench OF ABC_tb IS 
 
 	SIGNAL clk  	: std_logic;
 	SIGNAL rst	    : std_logic; 
@@ -46,7 +46,7 @@ BEGIN
 		wait;  
 	END PROCESS;
 				
-	entrada: PROCESS
+	entrada01: PROCESS
 	BEGIN 
 		entrada <= "00";
 		wait for 20 ns;
@@ -55,13 +55,6 @@ BEGIN
 		entrada <= "10";
 		wait for 20 ns;
 
-		entrada <= "10";
-		wait for 20 ns;
-		entrada <= "01";
-		wait for 20 ns;
-        entrada <= "00";
-		wait for 20 ns;
-
 		entrada <= "01";
 		wait for 20 ns;
 		entrada <= "10";
@@ -71,9 +64,16 @@ BEGIN
 
 		entrada <= "01";
 		wait for 20 ns;
-        entrada <= "00";
+        entrada <= "11";
         wait for 20 ns;
         entrada <= "10";
+		wait for 20 ns;
+
+        entrada <= "10";
+		wait for 20 ns;
+        entrada <= "11";
+		wait for 20 ns;
+        entrada <= "00";
 		wait for 20 ns;
 
 	END PROCESS;

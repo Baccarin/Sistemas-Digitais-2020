@@ -65,9 +65,9 @@ BEGIN
 				WHEN OTHERS =>
 					proximo_estado <= A;
 					saida <= '0';
-     END CASE;     
+	 END CASE; 
+	     
    END CASE;
 END PROCESS;
 		
 END arquitetura;
------------------------------------------
