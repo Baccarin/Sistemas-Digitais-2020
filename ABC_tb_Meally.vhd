@@ -1,17 +1,17 @@
 LIBRARY ieee;                                               
 USE ieee.std_logic_1164.all;                                
 
-ENTITY ABC_tb IS
-END ABC_tb;
+ENTITY ABC_tb_Meally IS
+END ABC_tb_Meally;
 
-ARCHITECTURE testbench OF ABC_tb IS 
+ARCHITECTURE testbench OF ABC_tb_Meally IS 
 
 	SIGNAL clk  	: std_logic;
 	SIGNAL rst	    : std_logic; 
 	SIGNAL entrada	: STD_LOGIC_VECTOR(1 DOWNTO 0);
 	SIGNAL saida	: std_logic;
 	
-	COMPONENT comp  
+	COMPONENT detector_ABC_Meally  
 	PORT (
 		clk 	: IN std_logic; 
 		rst	    : IN std_logic;
@@ -22,7 +22,7 @@ ARCHITECTURE testbench OF ABC_tb IS
 		
 BEGIN 
 	
-	i1: comp 
+	i1: detector_ABC_Meally 
 	PORT MAP (
 		clk => clk,
 		rst => rst,
@@ -54,27 +54,6 @@ BEGIN
 		wait for 20 ns;
 		entrada <= "10";
 		wait for 20 ns;
-
-		entrada <= "01";
-		wait for 20 ns;
-		entrada <= "10";
-		wait for 20 ns;
-		entrada <= "10";
-		wait for 20 ns;
-
-		entrada <= "01";
-		wait for 20 ns;
-        entrada <= "11";
-        wait for 20 ns;
-        entrada <= "10";
-		wait for 20 ns;
-
-        entrada <= "10";
-		wait for 20 ns;
-        entrada <= "11";
-		wait for 20 ns;
-        entrada <= "00";
-		wait for 20 ns;
-
+        
 	END PROCESS;
 END testbench;
